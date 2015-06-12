@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use App\Project;
+use App\Task;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -15,6 +17,7 @@ class TasksController extends Controller {
 	public function index()
 	{
 		//
+		return view('tasks.index', compact('project'));
 	}
 
 	/**
@@ -25,6 +28,8 @@ class TasksController extends Controller {
 	public function create()
 	{
 		//
+		return view('tasks.create', compact('project'));
+
 	}
 
 	/**
@@ -40,43 +45,49 @@ class TasksController extends Controller {
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  int  Tasks $task
 	 * @return Response
 	 */
-	public function show($id)
+	public function show(Tasks $task)
 	{
 		//
+		return view('tasks.show', compact('project', 'task'));
+
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  int  Tasks $task
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit(Tasks $task)
 	{
 		//
+		return view('tasks.edit', compact('project', 'task'));
+
 	}
 
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  int  $id
+	 * @param  int  Tasks $task
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Tasks $task)
 	{
 		//
+		return view('tasks.update', compact('project', 'task'));
+
 	}
 
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  int  $id
+	 * @param  int  Tasks $task
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy(Tasks $task)
 	{
 		//
 	}

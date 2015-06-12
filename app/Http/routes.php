@@ -20,13 +20,19 @@ Route::get('/', 'WelcomeController@index');
 // 	'password' => 'Auth\PasswordController',
 // ]);
 
-Route::resource('projects', 'ProjectsController');
-// Route::resource('tasks', 'TasksController');
-Route::resource('projects.tasks', 'TasksController');
+// Provide controller methods with object instead of ID ("Route Model Binding")
+Route::model('tasks', 'Task');
+Route::model('projects', 'Project');
 
+// Use slugs rather than IDs in URLs
 Route::bind('tasks', function($value, $route) {
 	return App\Task::whereSlug($value)->first();
 });
 Route::bind('projects', function($value, $route) {
 	return App\Project::whereSlug($value)->first();
 });
+
+Route::resource('projects', 'ProjectsController');
+// Route::resource('tasks', 'TasksController');
+	// Make tasks a nested resource under projects
+Route::resource('projects.tasks', 'TasksController');
