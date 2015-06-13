@@ -17,7 +17,7 @@ class ProjectsController extends Controller {
 	{
 		$projects = Project::all();
 		// Point to the appropriate view
-		return view('projects.index', compact('project'));
+		return view('projects.index', compact('projects'));
 	}
 
 	/**
