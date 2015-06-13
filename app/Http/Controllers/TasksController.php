@@ -14,7 +14,7 @@ class TasksController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index(Project $project)
 	{
 		//
 		return view('tasks.index', compact('project'));
@@ -25,7 +25,7 @@ class TasksController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function create(Project $project)
 	{
 		//
 		return view('tasks.create', compact('project'));
@@ -37,7 +37,7 @@ class TasksController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Project $project)
 	{
 		//
 	}
@@ -48,7 +48,7 @@ class TasksController extends Controller {
 	 * @param  int  Tasks $task
 	 * @return Response
 	 */
-	public function show(Tasks $task)
+	public function show(Project $project, Task $task)
 	{
 		//
 		return view('tasks.show', compact('project', 'task'));
@@ -61,7 +61,7 @@ class TasksController extends Controller {
 	 * @param  int  Tasks $task
 	 * @return Response
 	 */
-	public function edit(Tasks $task)
+	public function edit(Project $project, Task $task)
 	{
 		//
 		return view('tasks.edit', compact('project', 'task'));
@@ -74,7 +74,7 @@ class TasksController extends Controller {
 	 * @param  int  Tasks $task
 	 * @return Response
 	 */
-	public function update(Tasks $task)
+	public function update(Project $project, Task $task)
 	{
 		//
 		return view('tasks.update', compact('project', 'task'));
@@ -87,7 +87,7 @@ class TasksController extends Controller {
 	 * @param  int  Tasks $task
 	 * @return Response
 	 */
-	public function destroy(Tasks $task)
+	public function destroy(Project $project, Tasks $task)
 	{
 		//
 	}
