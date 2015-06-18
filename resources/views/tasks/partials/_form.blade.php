@@ -12,12 +12,12 @@
 
 <div class="form-group">
 	{!! Form::label('completed', 'Completed:') !!}
-	{!! Form::text('completed') !!}
+	{!! Form::checkbox('completed') !!}
 </div>
 
 <div class="form-group">
 	{!! Form::label('description', 'Description:') !!}
-	{!! Form::text('description') !!}
+	{!! Form::textarea('description') !!}
 </div>
 
 <div class="form-group">
