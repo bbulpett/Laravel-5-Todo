@@ -19,7 +19,7 @@
 		</ul>
 	@endif
 
-	<p>
-        {!! link_to_route('projects.create', 'Create Project') !!}
+	<p style="text-align: center;">
+        {!! link_to_route('projects.create', 'Create Project', null, array('class' => 'btn btn-default')) !!}
     </p>
 @endsection
