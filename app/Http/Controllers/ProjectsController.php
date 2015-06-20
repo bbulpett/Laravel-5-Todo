@@ -9,7 +9,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class ProjectsController extends Controller {
-
+	// Validation rules for Project creation and editing
+	protected $rules = [
+		'name' => ['required', 'min: 3'],
+		'slug' => ['required'],
+	];
+	// Additional validation rules can be found at http://laravel.com/docs/5.0/validation#available-validation-rules
+		
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -33,15 +39,17 @@ class ProjectsController extends Controller {
 		return view('projects.create');
 
 	}
-
+	
 	/**
 	 * Store a newly created resource in storage.
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		// Validation
+		$this->validate($request, $this->rules);
+
 		$input = Input::all();
 		Project::create( $input );
 
@@ -81,9 +89,11 @@ class ProjectsController extends Controller {
 	 * @param  int  Project $project
 	 * @return Response
 	 */
-	public function update(Project $project)
+	public function update(Project $project, Request $request)
 	{
-		//
+		// Validate
+		$this->validate($request, $this->rules);
+
 		$input = array_except(Input::all(), '_method');
 		$project->update($input);
 

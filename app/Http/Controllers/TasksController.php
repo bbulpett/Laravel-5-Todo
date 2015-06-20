@@ -10,7 +10,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class TasksController extends Controller {
-
+	// Validation rules for Project creation and editing
+	protected $rules = [
+		'name' => ['required', 'min: 3'],
+		'slug' => ['required'],
+		'description' => ['required'],
+	];
+	// Additional validation rules can be found at http://laravel.com/docs/5.0/validation#available-validation-rules
+	
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -39,9 +46,11 @@ class TasksController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(Project $project)
+	public function store(Project $project, Request $request)
 	{
-		//
+		// Validate
+		$this->validate($request, $this->rules);
+
 		$input = Input::all();
 		$input['project_id'] = $project->id;
 		Task::create( $input );
@@ -81,9 +90,11 @@ class TasksController extends Controller {
 	 * @param  int  Tasks $task
 	 * @return Response
 	 */
-	public function update(Project $project, Task $task)
+	public function update(Project $project, Task $task, Request $request)
 	{
-		//
+		// Validate
+		$this->validate($request, $this->rules);
+		
 		$input = array_except(Input::all(), '_method');
 		$task->update($input);
 
